@@ -1,0 +1,20 @@
+create table Usuario(
+id_usuario serial PRIMARY KEY, 
+email varchar (150) not null,
+nome varchar (100) not null,
+senha varchar (50) not null );
+
+create table Ranking (
+id_ranking serial PRIMARY KEY,
+nome_jogo varchar (150) not null,
+quantidade_rodadas integer  not null,
+numero_participantes integer  not null,
+numero_rodada integer not null,
+id_usuario integer REFERENCES Usuario (id_usuario)
+);
+
+create table Partida (
+pontuacao integer ,
+id_usuario integer REFERENCES Usuario (id_usuario),
+id_ranking integer REFERENCES Ranking (id_ranking) 
+);
